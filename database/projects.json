@@ -1,0 +1,42 @@
+{
+  "projects": [
+    {
+      "clientName": "Sulman",
+      "inverter": "sdas",
+      "city": "Lalamusa",
+      "power": "5KW",
+      "date": "2021-06-06",
+      "solarPanel": "8 Longi 445W",
+      "structure": "4x 12",
+      "batteries": "8 Phonix Tx300",
+      "batteryPack": "1 B4",
+      "batteryWire": "10mm 20m",
+      "pvWire": "10mm 30m",
+      "acWire": "10mm 40m",
+      "upvFitting": "20 feet",
+      "dbFitting": "1",
+      "anchorBolts": "44 fix3",
+      "addedBy": "Tahir",
+      "id": 1622844892605
+    },
+    {
+      "clientName": "Tahir Mehmood",
+      "inverter": "testing",
+      "city": "Gujrat",
+      "power": "5KW",
+      "date": "2021-06-09",
+      "solarPanel": "testing",
+      "structure": "testing",
+      "batteries": "testing",
+      "batteryPack": "testing",
+      "batteryWire": "testing",
+      "pvWire": "testing",
+      "acWire": "testing",
+      "upvFitting": "testing",
+      "dbFitting": "testing",
+      "anchorBolts": "testing",
+      "addedBy": "testing",
+      "id": 1622929109091
+    }
+  ]
+}
