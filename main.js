@@ -5,7 +5,7 @@ const db = require('electron-db');
 let location = path.join(__dirname +"/database");
 // require('electron-reload')(__dirname);
 
-let mainWindow
+let mainWindow;
 let dev = false
 if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
   dev = true
@@ -70,7 +70,9 @@ function createWindow() {
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
-    mainWindow = null
+    app.quit();
+    mainWindow = null;
+    singleProjectWindow = null;
   })
   Menu.setApplicationMenu(null)
 }
@@ -97,7 +99,7 @@ ipcMain.on("addNewProject", (event, data)=>{
 ipcMain.on("deleteProject", (event, id)=>{
   deleteData("projects", id);
   mainWindow.webContents.send("projectDeleted");
-})
+});
 
 // getting data
 ipcMain.on("getData", (event, tableName)=>{
@@ -108,8 +110,16 @@ ipcMain.on("getData", (event, tableName)=>{
 
 // getting single project
 ipcMain.on("openProject", (event, id)=>{
+    // singleProjectWindow = new BrowserWindow({
+    //   minHeight:700,
+    //   minWidth: 800,
+    // });
+    // console.log("window opened");
+    // singleProjectWindow.loadURL()
     const data = getSingleProject(id);
     console.log(data);
+    mainWindow.webContents.send("singleProject", data);
+
 });
 
 // get data from database -- a general function
@@ -126,13 +136,16 @@ function getData(tableName){
 // getting single project function
 
 function getSingleProject(id){
+  let projectData;
     db.getRows('projects', location, {
      id,
     },  (succ, result) => {
+      // console.log(succ, result);
      if(succ){
-       return result;
+       projectData = result;
      }
     });
+    return projectData;
 }
 
 // save data to a table -- a general function
@@ -154,6 +167,9 @@ function deleteData(tableName, id){
 
   });
 }
+
+
+
 
 app.on('ready', createWindow)
 app.on('window-all-closed', () => {
