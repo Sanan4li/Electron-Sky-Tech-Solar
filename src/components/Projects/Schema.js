@@ -1,0 +1,36 @@
+import * as Yup from "yup";
+export const addProjectInitialValues = {
+  clientName: "",
+  inverter: "",
+  city: "",
+  date: "",
+  power: "",
+  solarPanel: "",
+  batteries: "",
+  batteryPack: "",
+  structure: "",
+  batteryWire: "",
+  acWire: "",
+  pvWire: "",
+  upvFitting: "",
+  dbAndDp: "",
+  anchorBolts: "",
+};
+
+export const addProjectValidationSchema = Yup.object().shape({
+  clientName: Yup.string().required("Required"),
+  inverter: Yup.string().required("Required"),
+  city: Yup.string().required("Required"),
+  date: Yup.string().required("Required"),
+  power: Yup.string().required("Required"),
+  solarPanel: Yup.string().required("Required"),
+  batteries: Yup.string().required("Required"),
+  batteryPack: Yup.string().required("Required"),
+  structure: Yup.string().required("Required"),
+  batteryWire: Yup.string().required("Required"),
+  acWire: Yup.string().required("Required"),
+  pvWire: Yup.string().required("Required"),
+  upvFitting: Yup.string().required("Required"),
+  dbAndDp: Yup.number().required("Required").typeError("Must be a number!"),
+  anchorBolts: Yup.string().required("Required"),
+});

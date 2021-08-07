@@ -42,7 +42,7 @@
     "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
     "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development && craco start",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
-    "build-css": "npx tailwindcss build src/components/index.css -o src/assets/css/main.css",
+    "build-css": "npx tailwindcss build src/assets/index.css -o src/assets/css/main.css",
     "package": "npm run build",
     "postpackage": "electron-packager ./ --out=./builds"
   },
@@ -50,10 +50,14 @@
     "@craco/craco": "^6.1.2",
     "electron-db": "^0.15.7",
     "electron-reload": "^1.5.0",
+    "formik": "^2.2.9",
     "postcss-cli": "^8.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^7.0.4",
+    "underscore": "^1.13.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
