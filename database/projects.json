@@ -56,6 +56,24 @@
       "anchorBolts": "adf",
       "addedBy": "asdf",
       "id": 1626789735171
+    },
+    {
+      "clientName": "Testing",
+      "inverter": "Testing",
+      "city": "Gujrat",
+      "date": "adfad",
+      "power": "5KW",
+      "solarPanel": "SolarMax",
+      "batteries": "Phonix",
+      "batteryPack": "2",
+      "structure": "9x9",
+      "batteryWire": "19m",
+      "acWire": "20m",
+      "pvWire": "10m",
+      "upvFitting": "No",
+      "dbAndDp": "2",
+      "anchorBolts": "4",
+      "id": 1628440591044
     }
   ]
 }

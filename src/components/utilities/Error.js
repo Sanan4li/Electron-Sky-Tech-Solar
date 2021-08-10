@@ -6,7 +6,7 @@ const Error = ({ error, visible }) => {
   }
   return (
     <>
-      <p className="text-red-400 float-right right-0 ">{error}</p>
+      <p className="text-red-500 float-right right-0 ">{error}</p>
     </>
   );
 };

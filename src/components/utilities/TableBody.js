@@ -24,7 +24,7 @@ const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
       return (
         <>
           <tr
-            className="border-t-2 border-gray-300 bg-blue-600 text-gray-100"
+            className="border-t-2 border-gray-500 bg-gray-700 hover:bg-gray-800 text-gray-100"
             key={`project_${index}`}
           >
             {keys.map((key, index) => {

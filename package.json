@@ -42,7 +42,8 @@
     "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
     "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development && craco start",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
-    "build-css": "npx tailwindcss build src/assets/index.css -o src/assets/css/main.css",
+    "watch-css": "npx tailwindcss build -i src/assets/index.css -o src/assets/css/main.css --watch",
+    "build-css": "npx tailwindcss build -i src/assets/index.css -o src/assets/css/main.css",
     "package": "npm run build",
     "postpackage": "electron-packager ./ --out=./builds"
   },
@@ -80,7 +81,7 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-pxtorem": "^5.1.1",
     "style-loader": "^2.0.0",
-    "tailwindcss": "^2.1.3",
+    "tailwindcss": "^2.2.7",
     "webpack": "^5.24.4",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

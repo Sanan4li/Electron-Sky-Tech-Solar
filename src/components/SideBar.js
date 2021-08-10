@@ -2,19 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const SideBar = function () {
   return (
-    <div className="bg-indigo-600 col-span-1 w-1/5 z-10 flex justify-center  h-screen fixed  text-white ">
+    <div className="bg-gray-800 text-gray-300 col-span-1 w-1/5 z-10 flex justify-center  h-screen fixed   ">
       <div className=" m-4 w-10/12">
-        <h2 className="p-2 text-center font-semibold text-xl font-sans ">
+        <h2 className="p-2 text-center font-bold text-xl font-sans text-blue-400 ">
           Sky Tech Solar
         </h2>
 
         <ul className="flex flex-col justify-center items-center">
-          <li className="border-gray-300 border-t-2 w-4/5"></li>
-          <NavLink
-            to="/"
-            exact={true}
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <li className="border-gray-300 my-2 border-t-2 w-4/5"></li>
+          <NavLink to="/" exact={true} className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -35,10 +31,7 @@ const SideBar = function () {
               <span>Home</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/stock"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/stock" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -59,10 +52,7 @@ const SideBar = function () {
               <span>Stock</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/projects"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/projects" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -83,10 +73,7 @@ const SideBar = function () {
               <span>Projects</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/payments"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/payments" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -107,10 +94,7 @@ const SideBar = function () {
               <span>Payments</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/demand"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/demand" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -131,10 +115,7 @@ const SideBar = function () {
               <span>Demand</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/quotes"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/quotes" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -155,10 +136,7 @@ const SideBar = function () {
               <span>Quotes</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/used"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/used" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -179,10 +157,7 @@ const SideBar = function () {
               <span>Used</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/reports"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/reports" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -203,11 +178,8 @@ const SideBar = function () {
               <span>Reports</span>
             </div>
           </NavLink>
-          <li className="border-gray-300 border-t-2 w-4/5"></li>
-          <NavLink
-            to="/about"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <li className="border-gray-300  my-2 border-t-2 w-4/5"></li>
+          <NavLink to="/about" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -228,10 +200,7 @@ const SideBar = function () {
               <span>About</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/contact"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/contact" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -252,11 +221,8 @@ const SideBar = function () {
               <span>Contact</span>
             </div>
           </NavLink>
-          <li className="border-gray-300 border-t-2 w-4/5"></li>
-          <NavLink
-            to="/report"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <li className="border-gray-300 my-2 border-t-2 w-4/5"></li>
+          <NavLink to="/report" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"
@@ -277,10 +243,7 @@ const SideBar = function () {
               <span>Report</span>
             </div>
           </NavLink>
-          <NavLink
-            to="/developer"
-            className="flex flex-row justify-center p-1 hover:bg-indigo-700 cursor-pointer w-full focus:outline-none"
-          >
+          <NavLink to="/developer" className="navLink">
             <div className="w-1/5 p-2">
               <svg
                 className="w-6 h-6"

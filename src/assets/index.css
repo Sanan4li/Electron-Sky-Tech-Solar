@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 .active {
-  @apply bg-indigo-700;
+  @apply font-bold text-white bg-gray-900 rounded-md;
+}
+.navLink {
+  @apply flex flex-row justify-center hover:rounded-md p-1 hover:bg-gray-900 hover:text-white hover:font-bold cursor-pointer w-full focus:outline-none;
 }

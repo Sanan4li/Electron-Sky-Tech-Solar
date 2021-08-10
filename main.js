@@ -28,9 +28,9 @@ if (process.platform === "win32") {
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    minWidth: 1200,
+    minWidth: 1300,
     minHeight: 760,
-    backgroundColor: "#113ad1",
+    backgroundColor: "#212529",
     show: false,
     webPreferences: {
       nodeIntegration: true,
