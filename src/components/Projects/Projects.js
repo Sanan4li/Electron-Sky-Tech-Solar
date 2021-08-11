@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ipcRenderer } from "electron";
 import TextDateInput from "../utilities/TextDateInput";
@@ -7,6 +7,8 @@ import { projectsTableHeaders, projectsTableKeys } from "./TableHeaderkeys";
 import TableBody from "../utilities/TableBody";
 import { notify } from "../utilities/Toast.js";
 import DetailsItem from "../utilities/DetailsItem";
+import ReactToPrint from "react-to-print";
+
 function Projects() {
   const [singleProjectOpen, setSingleProjectOpen] = useState(false);
   const [singleProjectData, setSingleProjectData] = useState([]);
@@ -16,7 +18,7 @@ function Projects() {
   const [type, setType] = useState("text");
   const [toDate, setToDate] = useState("");
   const [fromDate, setFromDate] = useState("");
-
+  const componentRef = useRef();
   useEffect(() => {
     ipcRenderer.on("singleProject", (event, data) => {
       console.log(data);
@@ -190,33 +192,38 @@ function Projects() {
         <div className="w-full absolute flex items-center z-50 bg-transparent h-screen">
           <div className=" bg-gray-50  w-3/5  text-center align-middle ml-auto mr-auto ">
             <div className="w-full flex justify-center items-center  ">
-              <div className="w-10/12 ">
+              <div className="w-10/12  ">
                 <h1 className="text-center text-xl"></h1>
               </div>
-              <div className="w-2/12  flex ">
+              <div className="w-2/12  flex ml-9">
+                <ReactToPrint
+                  trigger={() => (
+                    <button
+                      className=" pt-2 pl-2 pb-2.5 pr-2  text-right rounded-sm text-gray-800 font-semibold block mr-0  cursor-pointer hover:text-black focus:outline-none"
+                      onClick={() => {
+                        console.log("printing...");
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                  content={() => componentRef.current}
+                />
                 <button
-                  className=" pt-2 pl-2 pb-2.5 pr-2  text-right rounded-sm text-gray-800 font-semibold block mr-0  cursor-pointer hover:text-black"
-                  onClick={() => {
-                    console.log("printing...");
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className=" pt-2 pl-2 pb-2.5 pr-2  text-right rounded-sm text-gray-800 font-semibold block mr-0  cursor-pointer hover:text-black"
+                  className=" pt-2 pl-2 pb-2.5 pr-2  text-right rounded-sm text-gray-800 font-semibold block mr-0  cursor-pointer hover:text-black  focus:outline-none"
                   onClick={() => {
                     setSingleProjectOpen(false);
                   }}
@@ -238,14 +245,17 @@ function Projects() {
                 </button>
               </div>
             </div>
-            <div class="mt-1 mb-3 w-11/12 ml-auto mr-auto">
+            <div
+              className="mt-5 mb-3 w-11/12 ml-auto mr-auto"
+              ref={componentRef}
+            >
               <h1 className="text-2xl p-2 text-blue-600 font-bold text-center w-full">
                 Project Details
               </h1>
 
               {singleProjectData.map((project, index) => {
                 return (
-                  <div>
+                  <div className="mb-10">
                     <DetailsItem
                       name="Client Name"
                       value={project.clientName}
@@ -274,7 +284,7 @@ function Projects() {
                       name="UPV Fitting"
                       value={project.upvFitting}
                     />
-                    <DetailsItem name="DB & DP " value={project.dbAndDp} />
+                    <DetailsItem name="DB & DP " value={project.dbFitting} />
                     <DetailsItem
                       name="Anchor Bolts"
                       value={project.anchorBolts}
