@@ -14,7 +14,7 @@ const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
     <tr>
       <td
         colSpan="7"
-        className="w-full p-2 text-center text-2xl text-white font-semibold"
+        className="w-full p-2 text-center text-2xl text-gray-200 font-semibold"
       >
         <h2> No Record Found. </h2>
       </td>
@@ -24,7 +24,7 @@ const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
       return (
         <>
           <tr
-            className="border-t-2 border-gray-500 bg-gray-700 hover:bg-gray-800 text-gray-100"
+            className="border-t-2 border-gray-500 bg-gray-700 hover:bg-gray-800 text-gray-300"
             key={`project_${index}`}
           >
             {keys.map((key, index) => {

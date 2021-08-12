@@ -195,7 +195,7 @@ function Projects() {
               <div className="w-10/12  ">
                 <h1 className="text-center text-xl"></h1>
               </div>
-              <div className="w-2/12  flex ml-9">
+              <div className="w-2/12  flex ml-10">
                 <ReactToPrint
                   trigger={() => (
                     <button
