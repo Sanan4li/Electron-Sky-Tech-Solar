@@ -37,6 +37,18 @@ function createWindow() {
       contextIsolation: false,
     },
   });
+
+  // window resized
+  mainWindow.on("resize", function () {
+    var size = mainWindow.getSize();
+    var width = size[0];
+    var height = size[1];
+    mainWindow.webContents.send("resized", height);
+    console.log(size);
+    console.log("width: " + width);
+    console.log("height: " + height);
+  });
+
   // createTable("projects");
   let indexPath;
   globalShortcut.register("f5", function () {

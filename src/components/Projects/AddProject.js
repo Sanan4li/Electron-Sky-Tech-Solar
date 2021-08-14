@@ -176,7 +176,7 @@ function AddProject() {
               </svg>
             </Link>
           </div>
-          <h1 className="text-2xl p-2 mb-3 text-center font-bold col-span-3 text-white ">
+          <h1 className="text-2xl p-2 mb-3 text-center  col-span-3 text-gray-200 ">
             Add New Project
           </h1>
           <CustomInput label="Client Name " name="clientName" />

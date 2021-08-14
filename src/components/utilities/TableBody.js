@@ -1,30 +1,24 @@
-import React from "react";
-
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { ipcRenderer } from "electron";
 const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
-  return loading ? (
-    <tr>
-      <td
-        colSpan="7"
-        className="w-full p-2 text-center text-2xl text-white font-semibold"
-      >
-        Loading Data....
-      </td>
-    </tr>
-  ) : data.length == 0 ? (
-    <tr>
-      <td
-        colSpan="7"
-        className="w-full p-2 text-center text-2xl text-gray-200 font-semibold"
-      >
-        <h2> No Record Found. </h2>
-      </td>
-    </tr>
-  ) : (
-    data.map((project, index) => {
+  const [pageNumber, setPageNumber] = useState(0);
+
+  let windowHeight = window.innerHeight;
+  const usersPerPage = Math.floor(windowHeight / 90);
+  const pagesVisited = pageNumber * usersPerPage;
+  console.log(windowHeight);
+  ipcRenderer.on("resized", (event, data) => {
+    console.log(data);
+    windowHeight = data;
+  });
+  const displayData = data
+    .slice(pagesVisited, pagesVisited + usersPerPage)
+    .map((project, index) => {
       return (
         <>
           <tr
-            className="border-t-2 border-gray-500 bg-gray-700 hover:bg-gray-800 text-gray-300"
+            className="border-t-2 border-gray-500 bg-gray-900 hover:bg-gray-700 text-gray-300"
             key={`project_${index}`}
           >
             {keys.map((key, index) => {
@@ -92,7 +86,47 @@ const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
           </tr>
         </>
       );
-    })
+    });
+
+  const pageCount = Math.ceil(data.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+  return loading ? (
+    <tr>
+      <td
+        colSpan="7"
+        className="w-full p-2 text-center text-2xl text-white font-semibold"
+      >
+        Loading Data....
+      </td>
+    </tr>
+  ) : data.length == 0 ? (
+    <tr>
+      <td
+        colSpan="7"
+        className="w-full p-2 text-center text-2xl text-gray-200 font-semibold"
+      >
+        <h2> No Record Found. </h2>
+      </td>
+    </tr>
+  ) : (
+    <>
+      {displayData}
+      <ReactPaginate
+        previousLabel={"Prev"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        pageLinkClassName=" p-2 m-1"
+        containerClassName=" w-9/12 flex item-center justify-center fixed text-gray-400 p-3 mt-5 ml-1 "
+        previousLinkClassName={" p-2 m-1"}
+        nextLinkClassName={" p-2 m-1"}
+        disabledClassName={"text-gray-500"}
+        activeClassName={"bg-blue-600 text-gray-100 font-bold"}
+      />
+    </>
   );
 };
 
