@@ -4,7 +4,7 @@ import "../assets/css/main.css";
 import "../assets/css/toast.css";
 import SideBar from "./SideBar";
 import MainArea from "./MainArea";
-import Stock from "./Stock";
+import Stock from "./Stock/Stock";
 import Payments from "./Payments";
 import Projects from "./Projects/Projects";
 import AddProject from "./Projects/AddProject";

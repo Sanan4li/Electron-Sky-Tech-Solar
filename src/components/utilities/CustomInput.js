@@ -3,7 +3,7 @@ import { INPUT_TYPES } from "../../Constants/InputConstants";
 import TextInput from "./TextInput";
 // import PasswordInput from "./PasswordInput";
 import { useFormikContext } from "formik";
-// import Select from "./Select";
+import Select from "./Select";
 import _ from "underscore";
 import Error from "./Error";
 // import NumberInput from "./NumberInput";
@@ -66,16 +66,16 @@ const CustomInput = ({
     // [INPUT_TYPES.CHECKBOX_INPUT]: (
     //   <CheckBox label={label} onChange={handleChange(name)} value={value} />
     // ),
-    // [INPUT_TYPES.SELECT]: (
-    //   <Select
-    //     placeholder={label}
-    //     label={label}
-    //     value={value}
-    //     name={name}
-    //     onChange={handleChange(name)}
-    //     options={options}
-    //   />
-    // ),
+    [INPUT_TYPES.SELECT]: (
+      <Select
+        placeholder={label}
+        label={label}
+        value={value}
+        name={name}
+        onChange={handleChange(name)}
+        options={options}
+      />
+    ),
   }[type];
   return (
     <div>

@@ -8,28 +8,10 @@ import { addProjectInitialValues, addProjectValidationSchema } from "./Schema";
 import SubmitButton from "../utilities/SubmitButton";
 function AddProject() {
   let history = useHistory();
-  const [type, setType] = useState("text");
-  const [data, setData] = useState({
-    clientName: "",
-    inverter: "",
-    city: "",
-    power: "",
-    date: "",
-    solarPanel: "",
-    structure: "",
-    batteries: "",
-    batteryPack: "",
-    batteryWire: "",
-    pvWire: "",
-    acWire: "",
-    upvFitting: "",
-    dbFitting: "",
-    anchorBolts: "",
-    addedBy: "",
-  });
-  function pushBack() {
+
+  const pushBack = () => {
     history.goBack();
-  }
+  };
   useEffect(() => {
     ipcRenderer.on("projectSaved", (event) => {
       console.log("Saved");
@@ -40,111 +22,6 @@ function AddProject() {
     });
   }, []);
 
-  // function submitHandler(e) {
-  //   e.preventDefault();
-  //   ipcRenderer.send("addNewProject", data);
-  //   setData({
-  //     clientName: "",
-  //     inverter: "",
-  //     city: "",
-  //     power: "",
-  //     date: "",
-  //     solarPanel: "",
-  //     structure: "",
-  //     batteries: "",
-  //     batteryPack: "",
-  //     batteryWire: "",
-  //     pvWire: "",
-  //     acWire: "",
-  //     upvFitting: "",
-  //     dbFitting: "",
-  //     anchorBolts: "",
-  //     addedBy: "",
-  //   });
-  // }
-  function onValueChangeHandler(e, fieldName) {
-    if (fieldName == "clientName") {
-      setData({
-        ...data,
-        clientName: e.target.value,
-      });
-    } else if (fieldName == "inverter") {
-      setData({
-        ...data,
-        inverter: e.target.value,
-      });
-    } else if (fieldName == "city") {
-      setData({
-        ...data,
-        city: e.target.value,
-      });
-    } else if (fieldName == "power") {
-      setData({
-        ...data,
-        power: e.target.value,
-      });
-    } else if (fieldName == "date") {
-      setData({
-        ...data,
-        date: e.target.value,
-      });
-    } else if (fieldName == "solarPanel") {
-      setData({
-        ...data,
-        solarPanel: e.target.value,
-      });
-    } else if (fieldName == "structure") {
-      setData({
-        ...data,
-        structure: e.target.value,
-      });
-    } else if (fieldName == "batteries") {
-      setData({
-        ...data,
-        batteries: e.target.value,
-      });
-    } else if (fieldName == "batteryPack") {
-      setData({
-        ...data,
-        batteryPack: e.target.value,
-      });
-    } else if (fieldName == "batteryWire") {
-      setData({
-        ...data,
-        batteryWire: e.target.value,
-      });
-    } else if (fieldName == "pvWire") {
-      setData({
-        ...data,
-        pvWire: e.target.value,
-      });
-    } else if (fieldName == "acWire") {
-      setData({
-        ...data,
-        acWire: e.target.value,
-      });
-    } else if (fieldName == "upvFitting") {
-      setData({
-        ...data,
-        upvFitting: e.target.value,
-      });
-    } else if (fieldName == "dbFitting") {
-      setData({
-        ...data,
-        dbFitting: e.target.value,
-      });
-    } else if (fieldName == "anchorBolts") {
-      setData({
-        ...data,
-        anchorBolts: e.target.value,
-      });
-    } else if (fieldName == "addedBy") {
-      setData({
-        ...data,
-        addedBy: e.target.value,
-      });
-    }
-  }
   const hanldeSubmit = (values) => {
     console.log("submitted");
     console.log(values);
@@ -186,7 +63,7 @@ function AddProject() {
           <CustomInput label="Power" name="power" />
           <CustomInput label="Solar Panel  " name="solarPanel" />
           <CustomInput label="Batteries " name="batteries" />
-          <CustomInput label="Battery Pack " name="batteryPack" />
+          <CustomInput label="Battery Rack " name="batteryRack" />
           <CustomInput label="Structure " name="structure" />
           <CustomInput label="Battery Wire " name="batteryWire" />
           <CustomInput label="AC Wire " name="acWire" />

@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { ipcRenderer } from "electron";
 const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
   const [pageNumber, setPageNumber] = useState(0);
-
+  const [height, setHeight] = useState(windowHeight);
   let windowHeight = window.innerHeight;
-  const usersPerPage = Math.floor(windowHeight / 90);
+  let usersPerPage = Math.floor(windowHeight / 90);
   const pagesVisited = pageNumber * usersPerPage;
   console.log(windowHeight);
+  useEffect(() => {
+    windowHeight = height;
+    usersPerPage = Math.floor(windowHeight / 90);
+  });
+
   ipcRenderer.on("resized", (event, data) => {
-    console.log(data);
+    setHeight(data);
     windowHeight = data;
   });
+
   const displayData = data
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((project, index) => {
@@ -119,12 +125,14 @@ const TableBody = ({ loading, data, clickHandler, keys, buttons = [] }) => {
         nextLabel={"Next"}
         pageCount={pageCount}
         onPageChange={changePage}
-        pageLinkClassName=" p-2 m-1"
+        pageLinkClassName=" p-2 m-1 focus:outline-none"
         containerClassName=" w-9/12 flex item-center justify-center fixed text-gray-400 p-3 mt-5 ml-1 "
-        previousLinkClassName={" p-2 m-1"}
-        nextLinkClassName={" p-2 m-1"}
+        previousLinkClassName={" p-2 m-1  focus:outline-none focus:border-none"}
+        nextLinkClassName={" p-2 m-1  focus:outline-none focus:border-none "}
         disabledClassName={"text-gray-500"}
-        activeClassName={"bg-blue-600 text-gray-100 font-bold"}
+        activeClassName={
+          "bg-blue-600 text-gray-100  focus:outline-none focus:border-none font-bold"
+        }
       />
     </>
   );

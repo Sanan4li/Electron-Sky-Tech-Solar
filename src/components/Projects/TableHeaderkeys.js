@@ -6,7 +6,7 @@ export const projectsTableHeaders = [
   "Solar Panel",
   "Structure",
   "Batteries",
-  "Battery Pack",
+  "Battery Rack",
   "",
   "",
 ];
@@ -18,5 +18,5 @@ export const projectsTableKeys = [
   "solarPanel",
   "structure",
   "batteries",
-  "batteryPack",
+  "batteryRack",
 ];

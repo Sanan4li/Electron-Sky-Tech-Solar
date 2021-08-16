@@ -54,7 +54,7 @@ function Projects() {
     };
   }, []);
 
-  function clickHandler(button, id) {
+  const clickHandler = (button, id) => {
     if (button == "delete") {
       ipcRenderer.send("deleteProject", id);
       ipcRenderer.send("getData", "projects");
@@ -63,21 +63,21 @@ function Projects() {
     if (button == "open") {
       handleOpenProject(id);
     }
-  }
+  };
 
-  function changeType() {
+  const changeType = () => {
     setType("date");
-  }
-  function onSearchChange(e) {
+  };
+  const onSearchChange = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
-  function clearDates() {
+  const clearDates = () => {
     setType("text");
     setFromDate("");
     setToDate("");
-  }
-  function onDateChange(e, fieldName) {
+  };
+  const onDateChange = (e, fieldName) => {
     if (fieldName == "from") {
       setFromDate(e.target.value);
     } else if (fieldName == "to") {
@@ -88,11 +88,11 @@ function Projects() {
       }
       setToDate(e.target.value);
     }
-  }
-  function handleOpenProject(id) {
+  };
+  const handleOpenProject = (id) => {
     ipcRenderer.send("openProject", id);
     setSingleProjectOpen(true);
-  }
+  };
 
   return (
     <>
@@ -270,8 +270,8 @@ function Projects() {
                     />
                     <DetailsItem name="Batteries" value={project.batteries} />
                     <DetailsItem
-                      name="Battery Pack"
-                      value={project.batteryPack}
+                      name="Battery Rack"
+                      value={project.batteryRack}
                     />
                     <DetailsItem name="Structure" value={project.structure} />
                     <DetailsItem
